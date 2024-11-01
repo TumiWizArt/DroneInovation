@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs')  %>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin="">
+</script>
+
+
+<body>
+    <div class="container">
+
+
+        <div class="panel1">
+           <%- include('./partials/navbar')  %>
+           <style>
+                #Tracking
+                {
+                    background-color: rgb(255, 255, 255);
+                }
+                #map {
+                    margin-top: 5vh;
+                    margin-left: 5vh;
+                    height: 1800%;
+                    width: 90%;
+                 }
+                #main
+                {
+                    background-color: black;
+                }
+                
+           </style>
+        </div>
+
+
+        <div class="panel2">
+
+            <div class="header">header</div>
+
+            <div class="main">
+                <div class="mainContainer">
+                    <div class="heading"><h1>Tracking</h1></div>
+                    <div id="map"></div>
+                    <div class="mainTBL">
+                        
+                    </div>
+                </div>
+
+                
+            </div>
+
+            
+        </div>
+    </div>
+    
+    
+    
+    
+</body>
+
+<script>
+
+
+    var map = L.map('map').setView([51.505, -0.09], 13);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    navigator.geolocation.watchPosition(success, error);
+    let marker, circle;
+
+    function success(pos)
+    {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        const accuracy = pos.coords.accuracy;
+
+        marker = L.marker([lat, lng]).addTo(map);
+        circle = L.circle([lat, lng], {radius : accuracy}).addTo(map);
+
+        map.fitBounds(circle.getBounds());
+    }
+
+    function error(err)
+    {
+        if(err.code === 1)
+        {
+            alert('Please allow geolocation access');
+        }
+        else{alert('cannot get current location');}
+    }
+
+
+</script>
+
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%></title>
+
+    <style>
+        *{
+            font-family:sans-serif;
+        }
+        
+        .addForm{
+            display: flex;
+            background-color:rgb(177, 177, 177);
+            width: 30%;
+            height: 50%;
+            align-items: center;
+            justify-content: center;
+            margin-left: 35%;
+            margin-top: 10%;
+            
+        }
+
+        form
+        {
+            margin: 5%;
+            display: flex;
+            flex-direction: column;
+            gap: 3vh;
+        }
+
+        .C{
+            display: flex;
+            flex-direction: column;
+        }
+        button
+        {
+            width: 40%;
+            margin-left: 33%;
+        }
+
+        .heading{
+            position: absolute;
+            font-size: 2.5vh;
+            display: flex;
+            align-items: center;
+            height: 10vh;
+            color: rgb(78, 78, 78);
+            margin-left: 41%;
+            margin-top: -8%;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="heading"><h1>Update CLient</h1></div>
+
+    <div class="addForm">
+        <form action="/clients/update/:id" method="POST">
+            <div id="nameC" class="C">
+                <label for="name" >Name</label>
+                <input name="name" id="nameIn" type="text" value="<%= clients.Name %>">
+            </div>
+
+            <div id="surnameC" class="C">
+                <label for="surname">Surname</label>
+                <input name="surname"  id="surnameIn" type="text" value="<%= clients.Surname %>">
+            </div>
+
+            <div id="dateofbirthC" class="C">
+                <label for="dob">Date Of Birth</label>
+                <input name="dob" id="dobIn" type="text" value="<%= clients.DateOfBirth %>">
+            </div>
+
+            <div id="genderC" class="C">
+                <label for="gender">Gender</label>
+                <input name="gender" id="genderIn" type="text" value="<%= clients.Gender %>">
+            </div>
+
+            <div id="emailC" class="C">
+                <label for="email">Email</label>
+                <input name="email" id="emailIn" type="text" value="<%= clients.Email %>">
+            </div>
+
+            <button>Update</button>
+        </form>
+    </div>
+</body>
+</html>

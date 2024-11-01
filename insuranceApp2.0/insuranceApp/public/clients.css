@@ -1,0 +1,158 @@
+*{
+    font-family:sans-serif;
+}
+.container{
+    display: flex;
+    background: rgb(183, 183, 183);
+    height: 100vh;
+    width: 100%;
+    
+
+}
+
+.panel1{
+    display: flex;
+    width: 20%;
+}
+
+.panel2{
+    display: flex;
+    flex-direction:column;
+    width: 80%;
+}
+
+.header{
+    background: white;
+    color: white;
+    height: 12vh;
+}
+
+.navbar{
+     background: rgb(102, 204, 102); 
+    /*background: rgb(73, 169, 73); */
+    flex-grow: 1;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+.nameApp{
+    flex-grow: 1;
+    height: 20%;
+}
+
+#pageLinks{
+    font-size: 2.5vh;
+    flex-grow: 2;
+    padding-left: 30%;
+    padding-top: 20%;
+    height: 60%;
+}
+
+li{
+    padding: 2vh;
+}
+
+#logout{
+    font-size: 2vh;
+    flex-grow: 1;
+    justify-self: flex-end;
+    padding-left: 30%;
+    padding-top: 20%;
+    height: 10%;
+}
+
+.main{
+    background: rgb(213, 213, 213);
+    height: 88vh;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: peachpuff;
+    
+
+}
+
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 5vh;
+}
+
+.heading{
+    font-size: 3vh;
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    color: rgb(78, 78, 78);
+}
+
+.addBTN{
+    display: flex;
+    height: 7vh;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 3vh;
+    align-items: center;
+    font-size: 2vh;
+}
+
+.mainTBL{
+    flex-grow: 8;
+    padding-top: 3vh;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/* .clientsTable{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9;
+    font-family:sans-serif;
+} */
+
+table,th, td {
+    padding-right: 3vh;
+    padding-bottom: 2vh;
+}
+
+/* tbody tr:nth-child(even){
+    background: rgb(64, 64, 64);
+} */
+
+table{
+    padding-top: 3vh;
+    background-color: rgb(216, 216, 216);
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    gap: 10px;
+    font-size: 2.5vh;
+    
+    box-shadow:-1vh 1vh 3vh .2vh rgb(111, 111, 111);
+}
+
+.links{
+    text-decoration: none;
+    
+    color: black;
+}
+
+#addLink{
+    background: rgb(102, 204, 102);
+    width: 15vh;
+    height: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vh;
+}
+#addLink:hover{
+    background: rgb(128, 242, 128);
+    color: rgb(131, 131, 131);
+}

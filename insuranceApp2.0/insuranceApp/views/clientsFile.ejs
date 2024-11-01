@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs')  %>
+
+
+<body>
+    <div class="container">
+
+
+        <div class="panel1">
+           <%- include('./partials/navbar')  %>
+           <style>
+                #Clients
+                {
+                    background-color: rgb(255, 255, 255);
+                }
+           </style>
+        </div>
+
+
+        <div class="panel2">
+
+            <div class="header">header</div>
+
+            <div class="main">
+                <div class="mainContainer">
+                    <div class="heading"><h1>Clients</h1></div>
+                    <div class="addBTN">
+                        <a class="links" id="addLink" href="/clients/addClient">+  Add Client</a>
+                    </div>
+                    <div class="mainTBL">
+                        <table class="clientsTable">
+                            <thead>
+                                <tr>
+                                    <th>Client ID</th>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Date Of Birth</th>
+                                    <th>Gender</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% clients.forEach(client => { %>
+                                    <tr>
+                                        <td><%= client.CliendID %></td>
+                                        <td><%= client.Name %></td>
+                                        <td><%= client.Surname %></td>
+                                        <td><%= client.DateOfBirth %></td>
+                                        <td><%= client.Gender %></td>
+                                        <td><%= client.Email %></td>
+                                        <td>
+                                            <a href="/clients/update/<%= client.CliendID%>">
+                                                <img src="./pencil.png" alt="dels" style="height: 2vh">
+                                            </a>
+                                        </td>
+                                        
+                                        <td>
+                                            <a href="/clients/<%= client.CliendID%>" class="deleteIcon" data-item="<%= client.CliendID %>">
+                                                <img src="./delete.png" alt="update" style="height: 2vh">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const deleteIcons = document.querySelectorAll('a.deleteIcon');
+
+        deleteIcons.forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                e.preventDefault();  // Prevent the default link behavior
+                const clientId = icon.dataset.item;
+                const endpoint = `/clients/${clientId}`;
+
+                fetch(endpoint, {
+                    method: 'DELETE',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    window.location.reload();  // Refresh the page to update the table
+                })
+                .catch(err => console.error('Error:', err));
+            });
+        });
+    });
+    </script>
+    
+    
+</body>
+</html>
